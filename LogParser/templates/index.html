@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form method="POST" action="{% url 'index' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+<div>
+  <label for="formFileLg" class="form-label">Загрузите лог</label>
+  <input class="form-control form-control-lg" id="formFileLg" type="file" name="file">
+    <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Парсим!</button>
+</div>
+</form>
+<div class="ips">
+  {% for ip in ips %}
+    {{ ip }}
+  {% endfor %}
+</div>
+{% endblock %}
