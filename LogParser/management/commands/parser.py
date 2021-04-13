@@ -15,6 +15,10 @@ from LogParser.models import LogEntry
             os.getenv('LOG_REGEX', r'(?P<ip>.+) (?P<user_id>.+) (?P<user_name>.+) \[(?P<date>.+)\] "(?P<method>.+) '
                                r'\(?P<request_path>.+) HTTP\/(?P<http_version>.+)" (?P<status_code>\d+) '
                                r'(?P<response_size>.*) "(?P<referrer>.*)" "(?P<user_agent>.*)" "-"'))
-        
+        # В качестве аргумента указываем ссылку на лог
+        # python manage.py parser http://www.almhuette-raith.at/apache-log/access.log
+        def add_arguments(self, parser):
+            parser.add_argument('log_url', type=str, action='store', help='url')
+
 
 
