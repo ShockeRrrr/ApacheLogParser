@@ -42,7 +42,7 @@ class Command(BaseCommand):
                         for line in chunk.decode('utf-8').splitlines(): # Преобразуем байты в строку
                             #и разобьем на множество строк, возвращая их списком
                             try:
-                                if not_ended_line: # если регулярка совпала?
+                                if not_ended_line: # если кусок строки на другом абзаце
                                     line = not_ended_line + line
                                 # Ищем совпадения регулярный выражении в каждой строке и при их обнаружении возращаем
                                 # словарь из {название группы : совпадение}
@@ -73,7 +73,7 @@ class Command(BaseCommand):
                             except AttributeError:  # В случае несовпадения регулярки, строку переносим на другой цикл
                                 if not not_ended_line:
                                     not_ended_line = line
-
+                        #чтобы tqdm двигался
                         progress_bar.update(len(chunk))
 
 
